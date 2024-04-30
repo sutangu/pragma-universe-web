@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  align-items: center;
+  padding: 2rem 6rem;
+  list-style: none;
+
+  .item {
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+
+    a {
+      transition: .3s;
+
+      &:hover, &:focus-visible {
+        opacity: .3;
+      }
+    }
+  }
+}
