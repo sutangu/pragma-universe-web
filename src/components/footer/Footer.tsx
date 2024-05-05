@@ -30,6 +30,8 @@ export default function Footer() {
           </li>
         </ul>
       </nav>
+
+      <div className={cs.year}>{(new Date()).getFullYear()}</div>
     </footer>
   );
 }
