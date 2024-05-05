@@ -1,95 +1,73 @@
-import Image from "next/image";
+// import Image from "next/image";
+import Link from 'next/link';
 import styles from "./page.module.scss";
+
+interface LinkInterface {
+  title: string;
+  url: string;
+}
+
+interface BlocksMOCKInterface {
+  title: string;
+  summary: string;
+  description?: string;
+  link?: LinkInterface;
+}
+
+const blocksMOCK: BlocksMOCKInterface[] = [
+  {
+    title: 'Приветственный блок текста',
+    summary: 'Начинается с ритуального приветствия',
+    description: 'Заканчивается приглашением прочитать далее подробнее',
+  },
+  {
+    title: 'Что такое Прагма?',
+    summary: 'Описание новой глобальной идеологии',
+    description: 'Заканчивается текстом о необходимости построить глобальное государство',
+  },
+  {
+    title: 'Вечная Империя',
+    summary: 'Описание что это такое и зачем нужно (выживание)',
+    description: 'Заканчивается тезисом о том, что человечеству нужно объединить усилия для достижения бессмертия',
+    link: {
+      title: 'Страница о Вечной Империи',
+      url: 'empire'
+    },
+  },
+  {
+    title: 'Бессмертие',
+    summary: 'Радикальное продление жизни как основная цель Вечной Империи',
+    description: 'Заканчивается вопросом о том, где мы все бессмертные будем жить',
+    link: {
+      title: 'Страница о Бессмертии',
+      url: 'empire'
+    },
+  },
+  {
+    title: 'Экспансия',
+    summary: 'Отвечает на вопрос о необходимости космической экспансии, как безальтернативном сценарии развития для предотвращения катастроф, и чтобы бессмерный вид мог расширять своё жизненное пространсво',
+    link: {
+      title: 'Страница Экспансии',
+      url: 'empire'
+    },
+  }
+];
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      <h1>Добро пожаловать во вселенную Прагмы!</h1>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <ul className={styles.blocks}>
+        {blocksMOCK.map((block: BlocksMOCKInterface) => (
+          <li key={block.title} className={styles.block}>
+            <h3>{block.title}</h3>
+            <p className={styles.summary}>{block.summary}</p>
+            <p className={styles.description}>{block.description}</p>
+            <Link className={styles.link} href={`/${block.link?.url}`}>{block.link?.title}</Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
