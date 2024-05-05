@@ -1,5 +1,6 @@
 // import Image from "next/image";
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 import styles from "./page.module.scss";
 
 interface LinkInterface {
@@ -40,7 +41,7 @@ const blocksMOCK: BlocksMOCKInterface[] = [
     description: 'Заканчивается вопросом о том, где мы все бессмертные будем жить',
     link: {
       title: 'Страница о Бессмертии',
-      url: 'empire'
+      url: 'immortality'
     },
   },
   {
@@ -48,7 +49,7 @@ const blocksMOCK: BlocksMOCKInterface[] = [
     summary: 'Отвечает на вопрос о необходимости космической экспансии, как безальтернативном сценарии развития для предотвращения катастроф, и чтобы бессмерный вид мог расширять своё жизненное пространсво',
     link: {
       title: 'Страница Экспансии',
-      url: 'empire'
+      url: 'expansion'
     },
   }
 ];
@@ -63,8 +64,15 @@ export default function Home() {
           <li key={block.title} className={styles.block}>
             <h3>{block.title}</h3>
             <p className={styles.summary}>{block.summary}</p>
-            <p className={styles.description}>{block.description}</p>
-            <Link className={styles.link} href={`/${block.link?.url}`}>{block.link?.title}</Link>
+            {block.description ? <p className={styles.description}>{block.description}</p> : null}
+            {block.link?.url ? <Link className={styles.link} href={`/${block.link.url}`}>
+              {block.link.title ?
+                <>
+                  {block.link.title}
+                  <span aria-hidden={true} className={styles.arrow}>→</span>
+                </> : null
+              }
+            </Link> : null}
           </li>
         ))}
       </ul>

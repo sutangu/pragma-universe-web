@@ -4,7 +4,7 @@ import cs from './Header.module.scss';
 
 export default function Header () {
   return (
-    <header>
+    <header className={cs.header}>
       <nav>
         <ul className={cs.list}>
           {
