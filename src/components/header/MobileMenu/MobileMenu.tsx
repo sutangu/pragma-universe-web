@@ -2,7 +2,7 @@ import cs from './MobileMenu.module.scss';
 import { NavigationMenuInterface } from '@/interfaces';
 import Link from 'next/link';
 
-const MobileMenu = ({ nav }: NavigationMenuInterface[]) => {
+const MobileMenu = ({ nav }: {nav: NavigationMenuInterface[]}) => {
   return (
     <div className={cs.hamburger}>
       <input className={cs.hamburger__toggle} id="menu__toggle" type="checkbox" />
