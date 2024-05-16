@@ -1,4 +1,6 @@
-export const nav = [
+import { NavigationMenuInterface } from '@/interfaces';
+
+export const nav: NavigationMenuInterface[] = [
   {
     path: '/',
     name: 'Главная',
