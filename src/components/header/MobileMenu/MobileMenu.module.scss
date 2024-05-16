@@ -5,10 +5,11 @@
     opacity: 0;
 
     &:checked + #{$selector}__btn > span {
-      transform: rotate(45deg);
+      transform: rotate(45deg) translate(.5rem, .5rem);
     }
 
     &:checked + #{$selector}__btn > span::before {
+      opacity: 0;
       top: 0;
       transform: rotate(0deg);
     }
@@ -21,14 +22,18 @@
     &:checked ~ #{$selector}__list {
       left: 0 !important;
     }
+
+    &:not(:checked) ~ #{$selector}__list {
+      display: none;
+    }
   }
 
   &__btn {
     position: absolute;
-    top: 2.8rem;
+    top: 2rem;
     left: 2rem;
     width: 2.6rem;
-    height: 2.6rem;
+    height: 2rem;
     cursor: pointer;
     z-index: 2;
 
@@ -45,7 +50,7 @@
 
     > span::before {
       content: '';
-      top: -.8rem;
+      top: 1.6rem;
     }
 
     > span::after {
@@ -72,16 +77,20 @@
 
   &__item {
     display: block;
-    padding: 1.2rem 2.4rem;
     color: #333;
     font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
     font-weight: 600;
     text-decoration: none;
     transition-duration: .25s;
 
-    &:hover {
-      background-color: #CFD8DC;
+    a {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      width: 100%;
+
+      &:hover {
+        background-color: #CFD8DC;
+      }
     }
   }
 }
